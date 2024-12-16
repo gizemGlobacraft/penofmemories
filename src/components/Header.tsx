@@ -9,8 +9,6 @@ import {
   Container,
   Button,
   MenuItem,
-  useTheme,
-  useMediaQuery,
 } from "@mui/material";
 import { Menu as MenuIcon } from "lucide-react";
 
@@ -18,8 +16,6 @@ const pages = ["Ana Sayfa", "Nasıl Çalışır?", "Örnekler", "İletişim"];
 
 export const Header = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);

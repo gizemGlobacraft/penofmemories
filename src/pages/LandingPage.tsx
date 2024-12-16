@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Box,
   Container,
@@ -7,15 +6,10 @@ import {
   Button,
   Grid,
   Card,
-  useTheme,
-  useMediaQuery,
 } from "@mui/material";
 import { Image, Brush, Palette, Send } from "lucide-react";
 
 export const LandingPage = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
   return (
     <Box
       component="main"
