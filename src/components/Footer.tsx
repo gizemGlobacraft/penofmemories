@@ -5,7 +5,6 @@ import {
   Typography,
   Link,
   IconButton,
-  useTheme,
 } from "@mui/material";
 import { Instagram, Facebook, Twitter } from "lucide-react";
 
