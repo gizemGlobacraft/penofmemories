@@ -7,157 +7,147 @@ import {
   Button,
   Grid,
   Card,
-  CardContent,
   useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import { Image, Brush, Palette, Send } from "lucide-react";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
-
-interface ContactFormData {
-  name: string;
-  email: string;
-  description: string;
-}
 
 export const LandingPage = () => {
   const theme = useTheme();
-  const [formData, setFormData] = useState<ContactFormData>({
-    name: "",
-    email: "",
-    description: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form data:", formData);
-    // Form submission logic here
-  };
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <>
-      <Header />
+    <Box
+      component="main"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
+        overflow: "hidden",
+      }}
+    >
+      {/* Hero Section */}
       <Box
         sx={{
-          bgcolor: "#faf7f5",
           minHeight: "100vh",
+          width: "100%",
+          background: "linear-gradient(45deg, #f8f3ff 30%, #fff5f5 90%)",
+          display: "flex",
+          alignItems: "center",
+          position: "relative",
         }}
       >
-        {/* Hero Section */}
-        <Box
-          sx={{
-            pt: { xs: 10, md: 15 }, // Mobile için daha az padding
-            pb: { xs: 6, md: 8 },
-            background: "linear-gradient(45deg, #f8f3ff 30%, #fff5f5 90%)",
-          }}
-        >
-          <Container maxWidth="lg">
-            <Grid container spacing={{ xs: 2, md: 4 }} alignItems="center">
-              <Grid item xs={12} md={6}>
-                <Typography
-                  variant="h1"
-                  sx={{
-                    fontSize: { xs: "2rem", sm: "2.5rem", md: "3.5rem" },
-                    lineHeight: { xs: 1.2, md: 1.4 },
-                  }}
-                >
-                  Anılarınız,
-                  <Box component="span" sx={{ color: "#9c7bb9" }}>
-                    {" "}
-                    tek çizgiyle{" "}
-                  </Box>
-                  sanata dönüşsün
-                </Typography>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: "#666",
-                    mb: 4,
-                    fontWeight: "light",
-                    lineHeight: 1.8,
-                  }}
-                >
-                  Fotoğraflarınızı minimalist sanat eserlerine dönüştürüyoruz.
-                  Her anı, tek çizgiyle anlatılan benzersiz bir hikayeye
-                  dönüşür.
-                </Typography>
-                <Button
-                  variant="contained"
-                  size="large"
-                  sx={{
-                    bgcolor: "#9c7bb9",
-                    "&:hover": {
-                      bgcolor: "#856ba1",
-                    },
-                    borderRadius: "28px",
-                    px: 4,
-                  }}
-                >
-                  Nasıl Çalışır?
-                </Button>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                {/* Buraya örnek bir line art SVG eklenebilir */}
-              </Grid>
+        <Container maxWidth="lg" sx={{ py: { xs: 4, md: 8 } }}>
+          <Grid container spacing={4} alignItems="center">
+            <Grid item xs={12} md={6}>
+              <Typography
+                variant="h1"
+                sx={{
+                  fontSize: { xs: "2.5rem", md: "3.5rem" },
+                  fontWeight: "light",
+                  color: "#2d2d2d",
+                  mb: 2,
+                  fontFamily: "Playfair Display",
+                }}
+              >
+                Anılarınız,
+                <Box component="span" sx={{ color: "#9c7bb9" }}>
+                  {" "}
+                  tek çizgiyle{" "}
+                </Box>
+                sanata dönüşsün
+              </Typography>
+              <Typography
+                sx={{
+                  color: "#666",
+                  mb: 4,
+                  fontSize: { xs: "1rem", md: "1.2rem" },
+                  lineHeight: 1.8,
+                }}
+              >
+                Fotoğraflarınızı minimalist sanat eserlerine dönüştürüyoruz. Her
+                anı, tek çizgiyle anlatılan benzersiz bir hikayeye dönüşür.
+              </Typography>
+              <Button
+                variant="contained"
+                size="large"
+                sx={{
+                  bgcolor: "#9c7bb9",
+                  "&:hover": { bgcolor: "#856ba1" },
+                  borderRadius: "28px",
+                  px: 4,
+                }}
+              >
+                Hemen Başlayın
+              </Button>
             </Grid>
-          </Container>
-        </Box>
-        {/* Process Section */}
-        <Container maxWidth="lg" sx={{ py: 12 }}>
+            <Grid item xs={12} md={6}>
+              {/* Örnek görsel alanı */}
+              <Box
+                sx={{
+                  width: "100%",
+                  height: { xs: "300px", md: "400px" },
+                  bgcolor: "rgba(156, 123, 185, 0.1)",
+                  borderRadius: "12px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography color="text.secondary">Örnek Görsel</Typography>
+              </Box>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Process Section */}
+      <Box sx={{ width: "100%", py: { xs: 8, md: 12 }, bgcolor: "#fff" }}>
+        <Container maxWidth="lg">
           <Typography
             variant="h3"
             align="center"
             sx={{
-              mb: 8,
-              fontFamily: '"Playfair Display", serif',
+              mb: { xs: 6, md: 8 },
+              fontFamily: "Playfair Display",
               color: "#2d2d2d",
             }}
           >
-            Süreç
+            Nasıl Çalışır?
           </Typography>
           <Grid container spacing={4}>
             {[
               {
-                icon: <Image size={40} />, // Memory yerine Image kullanıyoruz
-                title: "Anınızı Seçin",
-                description: "En değerli fotoğrafınızı bize gönderin",
+                icon: <Image size={40} />,
+                title: "Fotoğrafınızı Gönderin",
+                description: "En değerli anınızı seçin",
               },
               {
                 icon: <Brush size={40} />,
-                title: "Tasarım",
-                description:
-                  "Sanatçılarımız tek çizgi tekniğiyle eserinizi oluştursun",
+                title: "Tasarımı Bekleyin",
+                description: "Sanatçılarımız özenle çalışsın",
               },
               {
                 icon: <Palette size={40} />,
-                title: "Son Rötuşlar",
-                description: "İstediğiniz düzenlemeleri yapalım",
+                title: "Eserinizi Alın",
+                description: "Tek çizgi sanatınızı teslim edelim",
               },
             ].map((step, index) => (
               <Grid item xs={12} md={4} key={index}>
                 <Card
                   elevation={0}
                   sx={{
-                    bgcolor: "transparent",
+                    p: 4,
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
                     textAlign: "center",
-                    p: 2,
+                    bgcolor: "transparent",
                   }}
                 >
-                  <Box
-                    sx={{
-                      color: "#9c7bb9",
-                      mb: 2,
-                    }}
-                  >
-                    {step.icon}
-                  </Box>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      mb: 2,
-                      color: "#2d2d2d",
-                    }}
-                  >
+                  <Box sx={{ color: "#9c7bb9", mb: 2 }}>{step.icon}</Box>
+                  <Typography variant="h5" sx={{ mb: 2 }}>
                     {step.title}
                   </Typography>
                   <Typography color="text.secondary">
@@ -168,87 +158,67 @@ export const LandingPage = () => {
             ))}
           </Grid>
         </Container>
-        {/* Contact Form */}
-        <Box sx={{ bgcolor: "#fff", py: 12 }}>
-          <Container maxWidth="md">
-            <Typography
-              variant="h3"
-              align="center"
-              sx={{
-                mb: 6,
-                fontFamily: '"Playfair Display", serif',
-                color: "#2d2d2d",
-              }}
-            >
-              Anınızı Sanata Dönüştürelim
-            </Typography>
-            <form onSubmit={handleSubmit}>
-              <Grid container spacing={3}>
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Adınız"
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <TextField
-                    fullWidth
-                    label="Email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    multiline
-                    rows={4}
-                    label="Anınızı Anlatın"
-                    value={formData.description}
-                    onChange={(e) =>
-                      setFormData({ ...formData, description: e.target.value })
-                    }
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <Button
-                    fullWidth
-                    type="submit"
-                    variant="contained"
-                    size="large"
-                    endIcon={<Send />}
-                    sx={{
-                      bgcolor: "#9c7bb9",
-                      "&:hover": {
-                        bgcolor: "#856ba1",
-                      },
-                      borderRadius: "28px",
-                    }}
-                  >
-                    Gönder
-                  </Button>
-                </Grid>
-              </Grid>
-            </form>
-          </Container>
-        </Box>
-        {/* Footer */}
-        <Box sx={{ bgcolor: "#f8f3ff", py: 4 }}>
-          <Container>
-            <Typography align="center" color="text.secondary">
-              © 2024 PenOfMemories. Tüm hakları saklıdır.
-            </Typography>
-          </Container>
-        </Box>
       </Box>
-      <Footer />
-    </>
+
+      {/* Contact Form */}
+      <Box
+        sx={{
+          width: "100%",
+          py: { xs: 8, md: 12 },
+          bgcolor: "#f8f3ff",
+        }}
+      >
+        <Container maxWidth="sm">
+          <Typography
+            variant="h3"
+            align="center"
+            sx={{
+              mb: { xs: 6, md: 8 },
+              fontFamily: "Playfair Display",
+              color: "#2d2d2d",
+            }}
+          >
+            Anılarınızı Paylaşın
+          </Typography>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <TextField fullWidth label="Adınız" variant="outlined" />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="E-posta"
+                type="email"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Mesajınız"
+                multiline
+                rows={4}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                fullWidth
+                variant="contained"
+                size="large"
+                endIcon={<Send />}
+                sx={{
+                  bgcolor: "#9c7bb9",
+                  "&:hover": { bgcolor: "#856ba1" },
+                  borderRadius: "28px",
+                }}
+              >
+                Gönder
+              </Button>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+    </Box>
   );
 };
