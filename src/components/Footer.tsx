@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Box,
   Container,
@@ -11,8 +10,6 @@ import {
 import { Instagram, Facebook, Twitter } from "lucide-react";
 
 export const Footer = () => {
-  const theme = useTheme();
-
   return (
     <Box
       sx={{
